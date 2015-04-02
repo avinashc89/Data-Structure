@@ -133,4 +133,77 @@ public class BinaryTree {
 	}
 	
 	/************************************************************************************************/
+	
+	
+	public void print_all_leaf_node(Node root)
+	{
+		if(root != null)
+		{
+			print_all_leaf_node(root.left);
+			print_all_leaf_node(root.right);
+			
+			if(root.left == null && root.right ==null)
+				System.out.println(root.key);
+		}
+	}
+	
+	/************************************************************************************************/
+	
+	
+	public int count_leaves_node(Node root)
+	{
+		if(root == null) return 0;
+		
+		if(root.left == null && root.right ==null)
+			return 1;
+		
+		return count_leaves_node(root.left) + count_leaves_node(root.right);
+	}
+	
+	
+	/************************************************************************************************/
+	
+	public int[] diameter_of_BT(Node root)
+	{
+		int[] result=new int[]{0,0}; // [Diameter, Height]
+
+		if(root == null) return result;
+
+		int[] leftResult =  diameter_of_BT(root.left);
+		int[] rightResult = diameter_of_BT(root.right);
+
+		int rootDiameter = leftResult[1] + rightResult[1] + 1;
+		int leftDiameter = leftResult[0];
+		int rightDiameter = rightResult[0];
+		result[0] = Math.max(rootDiameter, Math.max(leftDiameter, rightDiameter));
+		
+		int height = Math.max(leftResult[1], rightResult[1]) + 1;
+		result[1] = height;
+
+		return result;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
