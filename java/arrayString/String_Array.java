@@ -391,7 +391,26 @@ public class String_Array {
 		}
 		return maxBenefit;
 	}
-	
+	/*****************************************************************************/
+	public int maxDiff_MaxBenifit(int[] a)
+	{
+		int len = a.length;
+	    	if (len < 1) return 0;
+		int maxNum = 0;
+		int maxDiff = 0;
+		for(int i = len-1; i >= 0; --i)
+		{
+		   if(a[i] > maxNum)
+		        maxNum = a[i];
+		        
+		   int tmpResult = maxNum - a[i]; 
+		   
+		   if(tmpResult > maxDiff)
+		       maxDiff = tmpResult;
+		    }
+		    return maxDiff;
+	}
+
 	/*****************************************************************************/
 	public static int Find_Min_In_Rotated_Sorted_Array(int[] arr, int left, int right)
     {
