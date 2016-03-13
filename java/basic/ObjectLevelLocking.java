@@ -1,42 +1,34 @@
 
-public class ClassLevelLocking{
+public class ObjectLevelLocking{
 	
 	public static void main(String[] args) {
 		
-		Avinash2 obj = new Avinash2();
-		Shriram2 obj3 = new Shriram2();
-		
-		obj.start();
-		obj3.start();
+		Avinash obj = new Avinash();
+		Thread t1 = new Thread(obj,"--t1");
+		Thread t2 = new Thread(obj,"--t2");
+		t1.start();
+		t2.start();
 	}
 }
 
 
-class Avinash2 extends Thread
+class Avinash implements Runnable
 {
+	TestNonStaticLocking test = new TestNonStaticLocking();
 	@Override
 	public void run() {
-		TestNonStaticLocking2.testSyncBlockThis();
-	}
-}
-
-class Shriram2 extends Thread
-{
-	TestNonStaticLocking2 obj = new TestNonStaticLocking2();
-	@Override
-	public void run() {
-		obj.testSyncMethod();
+		test.testSyncBlockByLockClass();
 	}
 }
 
 
 
-class TestNonStaticLocking2
+class TestNonStaticLocking
 {
 
-	final static MyLockingClass2 cObj = new MyLockingClass2(); 
+	final static MyLockingClass cObj = new MyLockingClass(); 
 
-	public static synchronized void testSyncMethod(){
+	public synchronized void testSyncMethod(){
 		System.out.println("inside testSyncMethod"+Thread.currentThread().getName());
 		try {
 			Thread.sleep(2000);
@@ -47,9 +39,9 @@ class TestNonStaticLocking2
 	}
 
 
-	public static void testSyncBlockThis(){
+	public void testSyncBlockThis(){
 		System.out.println("inside testSyncBlockThis"+Thread.currentThread().getName());
-		synchronized(TestNonStaticLocking2.class){
+		synchronized(this){
 			System.out.println("locked by this"+Thread.currentThread().getName());
 			try {
 				Thread.sleep(2000);
@@ -74,7 +66,7 @@ class TestNonStaticLocking2
 //		System.out.println("exit testSyncBlockByLockLocal"+Thread.currentThread().getName());
 //	}
 
-	public static void testSyncBlockByLockClass(){
+	public void testSyncBlockByLockClass(){
 		System.out.println("inside testSyncBlockByLockClass"+Thread.currentThread().getName());
 		synchronized(cObj){
 			System.out.println("locked by MyLockingClass class level object"+Thread.currentThread().getName());
@@ -92,7 +84,7 @@ class TestNonStaticLocking2
 }
 
 
-class MyLockingClass2
+class MyLockingClass
 {
 	private int lockId;
 }
