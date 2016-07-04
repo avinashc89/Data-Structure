@@ -6,6 +6,13 @@ public class Hashmap {
 	
 	public static void main(String[] args) {
 		
+		
+		String s =new String("abc");
+		String s1 =new String("abc");
+		System.out.println(s.hashCode());
+		System.out.println(s1.hashCode());
+		
+		
 		HashMap<Integer,String> hm = new HashMap<Integer,String>();
 		
 		hm.put(10, "Avinash");
@@ -20,6 +27,19 @@ public class Hashmap {
 		
 		
 		System.out.println(hm);
+		
+		
+		int a[] = new int[1];
+		a[0] = 5;
+		
+		runRec(a);
+		
+		System.out.println(a[0]);
+	}
+	
+	public static void runRec(int[] a)
+	{
+		a[0] = 30;
 	}
 
 }

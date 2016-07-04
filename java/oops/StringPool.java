@@ -26,6 +26,8 @@ public class StringPool {
 		System.out.println(a==b);    // true
 		System.out.println(a.equals(b)); //true
 		
+		System.out.println(a.substring(0,3));
+		
 		String a1 = new String("abc");
 		String b1 = new String("abc");
 		System.out.println(a1==b1);    // false

@@ -22,9 +22,9 @@ public class String_Array {
 	//	System.out.println(hopSteps(20));
 	//	System.out.println(hopStepsDP(20, new int[20]));
 	//	sumofThreeinArray(new int[]{1,5,3,-4,-3,6,2},9);
-	//	System.out.println(subsetVersion2(new int[]{1,2,3,4,5,6,7,8,9}));
+	System.out.println(Find_Min_In_Rotated_Sorted_Array(new int[]{6,7,8,9,1,2,3,4,5},0,8));
 	//	System.out.println(getPermutation("man"));
-	//	findAllSubsetThatSumsToN(new int[]{2,3,4,5} , 0, 0, 10, "");
+	//	subset_That_Sums_To_N(new int[]{1,2,3,4,5} , 0, 0, 7, "");
 		
 		Box b1 = new Box(1,2,3);
 		
@@ -142,21 +142,7 @@ public class String_Array {
 		map[n] =  hop_Steps_DP(n-1,map) + hop_Steps_DP(n-2,map) + hop_Steps_DP(n-3,map);
 		return map[n];
 	}
-	/*****************************************************************************/
-	static void find_All_Subset_That_Sums_To_N(int[] list, int index, int current, int goal, String result)
-	{ 
-	  if (list.length < index || current>goal)
-	          return;
-	   for (int i = index; i < list.length; i++) {
-	      if (current + list[i] == goal)   {
-	    	  result =  result + " " + list[i];
-	         System.out.println(result);
-	       }
-	       else if (current + list[i] < goal) {
-	    	   find_All_Subset_That_Sums_To_N(list, i + 1, current + list[i], goal, result + " " + list[i]);
-	        }
-	  }
-	}
+	
 	/*****************************************************************************/
 	public static boolean magic_Index(int[] a, int left, int right)
 	{
@@ -189,96 +175,9 @@ public class String_Array {
 			int y = magic_Index_With_Duplicates(a, newLeft, right);
 			return y;
 		}
-		return 0;
-	}
-	
-	
-	
-	/*****************************************************************************/
-	public static HashSet<HashSet<Integer>> subset_in_array1(int[] a)
-	{
-	//	static int lp = 0;
-		//int k = check;
-		
-	//	int k = boof;
-		HashSet<HashSet<Integer>> result = new HashSet<HashSet<Integer>> ();
-		HashSet<Integer> set  = new HashSet<Integer>();
-		for(int i : a)
-			set.add(i);
-		return generateSubset(result , set);
-		
+		return -1;
 	}
 
-	private static HashSet<HashSet<Integer>> generateSubset(
-			HashSet<HashSet<Integer>> result, HashSet<Integer> set) {
-
-		if(!set.isEmpty())
-		{
-			result.add(set);
-			for(int i : set)
-			{
-				HashSet<Integer> temp = new HashSet<Integer>();
-				temp.addAll(set);
-				temp.remove(i);
-				generateSubset(result, temp);
-			}
-		}
-		return result;
-	}
-	
-	/*****************************************************************************/
-	public static HashSet<HashSet<Integer>>  subset_in_array2(int a[])
-	{
-		HashSet<HashSet<Integer>> result = new HashSet<HashSet<Integer>> ();
-		HashSet<Integer> set  = new HashSet<Integer>();
-		result.add(set);
-
-		for(int i=0 ; i< a.length ; i++)
-		{
-			HashSet<HashSet<Integer>> temp = new HashSet<HashSet<Integer>>(); //cloning result into new temp
-			for(HashSet<Integer> h : result)
-			{
-				HashSet<Integer> newset = new HashSet<Integer>();
-				newset.addAll(h);
-				temp.add(newset);
-			}
-			for(HashSet<Integer> h : result) // add a[i] to all hashset in result
-			{
-				h.add(a[i]);
-			}
-			result.addAll(temp); // combine temp(old result) and new result
-		}
-		return result;
-	}
-	
-	/*****************************************************************************/
-	public static ArrayList<String> permutation_print_all_perm_in_String(String s)
-	{
-		if(s == null) return null;
-		
-		ArrayList<String> perm = new ArrayList<String>();
-		if(s.length() == 0){
-			perm.add("");
-			return perm;
-		}
-		
-		char x  = s.charAt(0); // split the first char
-		String remaining = s.substring(1);
-		ArrayList<String> wordList = permutation_print_all_perm_in_String(remaining);
-		for(String word : wordList)     // append the first char in all the places inside the words available in the list
-		{
-			for(int i=0 ; i<=word.length() ; i++) //i<=length - to include {} list at the base case
-			{
-				String first = word.substring(0,i);
-				String last = word.substring(i);
-				String permWord = first + x + last;
-				perm.add(permWord);		
-			}
-		}
-		return perm;
-		
-	}
-	
 	/*****************************************************************************/
 	public static ArrayList<Box> stackOfBox(Box[] b , Box bottom)
 	{
@@ -392,37 +291,35 @@ public class String_Array {
 		return maxBenefit;
 	}
 	/*****************************************************************************/
-	public int maxDiff_MaxBenifit(int[] a)
+	public int maxDiff(int[] a)
 	{
 		int len = a.length;
-	    	if (len < 1) return 0;
-		int maxNum = 0;
-		int maxDiff = 0;
-		for(int i = len-1; i >= 0; --i)
-		{
-		   if(a[i] > maxNum)
-		        maxNum = a[i];
-		        
-		   int tmpResult = maxNum - a[i]; 
-		   
-		   if(tmpResult > maxDiff)
-		       maxDiff = tmpResult;
-		    }
-		    return maxDiff;
+	    if (len < 1) return 0;
+	    int maxNum = 0;
+	    int maxDiff = 0;
+	    for(int i = len-1; i >= 0; --i)
+	    {
+	        if(a[i] > maxNum)
+	            maxNum = a[i];
+	        int tmpResult = maxNum - a[i];        
+	        if(tmpResult > maxDiff)
+	            maxDiff = tmpResult;
+	    }
+	    return maxDiff;
 	}
-
+	
 	/*****************************************************************************/
 	public static int Find_Min_In_Rotated_Sorted_Array(int[] arr, int left, int right)
     {
-        if (left == right)
+        if (left == right)    //only one num is present
             return arr[left];
 
-        if (arr[left] < arr[right])
+        if (arr[left] < arr[right])  //already sorted with no rotation
             return arr[left];
 
         int middle = (left + right) / 2;
 
-       if(arr[middle] < arr[right])
+       if(arr[middle] < arr[right])      //mid to right is sorted- so search left
     	   return Find_Min_In_Rotated_Sorted_Array(arr, left, middle);
        
         else
@@ -456,6 +353,172 @@ public class String_Array {
 			}
 		}
 	}
+	
+	
+	/*****************************************************************************/
+	// 10  21  22  100  101  200  300
+	//  i                      j    k
+	int getCountOfTriangles(int arr[], int n)
+	{
+		if(n < 3)	return 0;
+		
+		Arrays.sort(arr);
+		
+		int totalCount = 0, i = 0, j = 0, k = n - 1;
+		while(k > 1) {
+			i = 0; j = k - 1;
+			
+			while(i < j) {
+				if(arr[i] + arr[j] <= arr[k])
+					++i;
+				else {
+					totalCount += (j - i);
+					--j;
+				}
+			}
+			
+			--k;
+		}
+		
+		return totalCount;
+	}
+	
+	
+	
+	/*****************************************************************************/
+	public static boolean isValid(int count[], int k)
+	{
+	    int val = 0;
+	    for (int i=0; i<26; i++)
+	        if (count[i] > 0)
+	            val++;
+	 
+	    // Return true if k is greater than or equal to val
+	    return (k >= val);
+	}
+	public static void Substring_with_K_unique_char(char[] s, int k)
+	{
+	    int u = 0; // number of unique characters
+	    int n = s.length;
+	 
+	    int count[]  = new int[26];
+	 
+	    for (int i=0; i<n; i++)
+	    {
+	        if (count[s[i]-'a']==0)
+	            u++;
+	        count[s[i]-'a']++;
+	    }
+	 
+	    if (u < k)
+	    {
+	       //"Not enough unique characters";
+	        return;
+	    }
+	 
+	    int curr_start = 0, curr_end = 0;
+	    int maxlength = 1, max_start = 0;
+	 
+	   count = new int[26];
+	    
+	    count[s[0]-'a']++;  // put the first character
+	 
+	    // Start from the second character and add
+	    // characters in window according to above
+	    // explanation
+	    for (int i=1; i<n; i++)
+	    {
+	        // Add the character 's[i]' to current window
+	        count[s[i]-'a']++;
+	        curr_end++;
+	 
+	        // If there are more than k unique characters in
+	        // current window, remove from left side
+	        while (!isValid(count, k))
+	        {
+	            count[s[curr_start]-'a']--;
+	            curr_start++;
+	        }
+	 
+	        // Update the max window size if required
+	        if (curr_end-curr_start+1 > maxlength)
+	        {
+	        	maxlength = curr_end-curr_start+1;
+	        	max_start = curr_start;
+	        }
+	    }
+	 
+	  System.out.println(s.toString().substring(max_start, max_start+maxlength));
+	}
+	
+	
+	/*****************************************************************************/
+	
+	class ListNode {
+		int val;
+		ListNode next;
+	 
+		ListNode(int x) {
+			val = x;
+			next = null;
+		}
+	}
+	 
+	// Definition for binary tree
+	class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+	 
+		TreeNode(int x) {
+			val = x;
+		}
+	}
+	// get list length
+		public int getLength(ListNode head) {
+			int len = 0;
+			ListNode p = head;
+	 
+			while (p != null) {
+				len++;
+				p = p.next;
+			}
+			return len;
+		}
+	 
+	
+	static ListNode h;
+	 
+	public TreeNode sortedListToBST(ListNode head) {
+		if (head == null)
+			return null;
+ 
+		h = head;
+		int len = getLength(head);
+		return sortedListToBST(0, len - 1);
+	}
+ 
+	
+	// build tree bottom-up
+	public TreeNode sortedListToBST(int start, int end) {
+		if (start > end)
+			return null;
+ 
+		// mid
+		int mid = (start + end) / 2;
+ 
+		TreeNode left = sortedListToBST(start, mid - 1);
+		TreeNode root = new TreeNode(h.val);
+		h = h.next;
+		TreeNode right = sortedListToBST(mid + 1, end);
+ 
+		root.left = left;
+		root.right = right;
+ 
+		return root;
+	}
+	
+	
 	
 	
 	

@@ -6,6 +6,7 @@ public class Node {
 	public Node right;
 	public int key;
 	public Node next;
+	public int hd;
 	
 	public Node(int key)
 	{
