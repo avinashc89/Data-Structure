@@ -27,6 +27,7 @@ public class A_22_TriangleMinPath {
 		triangle.add(a4);
 		
 		System.out.println(minimumTotal(triangle));
+		System.out.println(minimumTotal(new int[][]{{2},{3,4},{6,5,7},{4,1,8,7}}));
 	}
 	
 	
@@ -37,12 +38,29 @@ public class A_22_TriangleMinPath {
 		for (int i = 0; i < triangle.get(l).size(); i++) {
 			total[i] = triangle.get(l).get(i);
 		}
-		System.out.println(Arrays.toString(total));
 		// iterate from last second row
 		for (int i = triangle.size() - 2; i >= 0; i--) {				//	size =4 , last line -3; start from 2 => size-2
-			for (int j = 0; j < triangle.get(i + 1).size() - 1; j++) {						//
-				System.out.println(triangle.get(i+1));
+			for (int j = 0; j < triangle.get(i).size(); j++) {						//curr list size
+				System.out.println(triangle.get(i));
 				total[j] = triangle.get(i).get(j) + Math.min(total[j], total[j + 1]);
+			}
+		}
+	 
+		return total[0];
+	}
+	
+	public static int minimumTotal(int[][] triangle) {
+		int[] total = new int[triangle.length];
+		int last = triangle.length - 1;
+	 
+		for (int i = 0; i < triangle[last].length; i++) {
+			total[i] = triangle[last][i];
+		}
+		System.out.println(Arrays.toString(total));
+		// iterate from last second row
+		for (int i = triangle.length - 2; i >= 0; i--) {				//	size =4 , last line -3; start from 2 => size-2
+			for (int j = 0; j < triangle[i].length; j++) {						//curr list size
+				total[j] = triangle[i][j] + Math.min(total[j], total[j + 1]);
 			}
 		}
 	 
