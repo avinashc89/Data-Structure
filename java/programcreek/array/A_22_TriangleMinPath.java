@@ -49,6 +49,13 @@ public class A_22_TriangleMinPath {
 		return total[0];
 	}
 	
+	//idea - adding from below
+	/*
+	     2
+	    3 4
+	   6 5 7
+	  4 1 8 7 
+	 */
 	public static int minimumTotal(int[][] triangle) {
 		int[] total = new int[triangle.length];
 		int last = triangle.length - 1;

@@ -1,6 +1,6 @@
 package com.tool.java.programcreek.math;
 
-public class M_11_CountPrime {
+public class M_11_CountPrimeFactor {
 
 	
 	

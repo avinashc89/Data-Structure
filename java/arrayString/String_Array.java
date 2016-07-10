@@ -450,10 +450,40 @@ public class String_Array {
 	 
 	  System.out.println(s.toString().substring(max_start, max_start+maxlength));
 	}
-	
-	
 	/*****************************************************************************/
-	
+
+	public String findLongestPrefix(String[] arrA) {
+		int resultLen = arrA[0].length();
+		int curr;
+		for (int i = 1; i < arrA.length; i++) {
+			curr = 0;
+			while (curr < resultLen && curr < arrA[i].length()
+					&& arrA[0].charAt(curr) == arrA[i].charAt(curr)) {
+				curr++;
+			}
+			resultLen = curr;
+		}
+		return arrA[0].substring(0, resultLen);
+	}
+	/*****************************************************************************/
+	public static void minimumIntegerCantbeformed(){
+        
+        int[] a ={1,3,4,12};
+        if(a==null) return;
+        int res=1;
+        for(int i=0; i< a.length ;i++)
+        {
+            if(a[i]<=res)
+                res=a[i]+res;
+            else
+                break;
+        }
+        
+        System.out.println(res);
+     }
+
+/*****************************************************************************/
+
 	class ListNode {
 		int val;
 		ListNode next;
