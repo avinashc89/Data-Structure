@@ -28,7 +28,7 @@ public class MergeSort {
 	private static void merge(int[] a, int left, int middle, int right) {
 
 		int temp[] = new int[right+1];
-		for(int idx =0 ; idx <= right ; idx++)
+		for(int idx =left ; idx <= right ; idx++)
 			temp[idx] = a[idx];
 
 		int i=left;
