@@ -1,4 +1,6 @@
-import javax.rmi.CORBA.Util;
+package com.tool.java.arrayString;
+
+import com.tool.java.matrix_Graph.Util;
 
 public class MaxI_JAndAi_Aj
 { 
@@ -34,8 +36,8 @@ public class MaxI_JAndAi_Aj
         for (j = n - 2; j >= 0; --j) 
             RMax[j] = max(arr[j], RMax[j + 1]); 
 
-        matrix.Util.printArray(LMin);
-        matrix.Util.printArray(RMax);
+        Util.printArray(LMin);
+        Util.printArray(RMax);
        
         /* Traverse both arrays from left to right to find optimum j - i 
        This process is similar to merge() of MergeSort */

@@ -1,3 +1,5 @@
+package com.tool.java.Trie;
+
 import java.util.HashMap;
 
 class Trie {

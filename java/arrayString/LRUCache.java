@@ -1,3 +1,5 @@
+package com.tool.java.arrayString;
+
 import java.util.HashMap;
 
 class MapNode{

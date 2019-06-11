@@ -1,4 +1,5 @@
-package matrix;
+package com.tool.java.matrix_Graph;
+
 
 public class Util
 {
@@ -26,6 +27,17 @@ public class Util
     } 
     
     public static void printArray(int mat[]){ 
+        System.out.println("_____________________");
+        for (int i = 0; i < mat.length; i ++){ 
+                System.out.print( mat[i] +"  "); 
+                
+        } 
+        System.out.println(""); 
+        
+        System.out.println("_____________________");
+    }
+    
+    public static void printArray(char mat[]){ 
         System.out.println("_____________________");
         for (int i = 0; i < mat.length; i ++){ 
                 System.out.print( mat[i] +"  "); 

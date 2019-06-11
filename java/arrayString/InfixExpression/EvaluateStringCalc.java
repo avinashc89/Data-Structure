@@ -1,6 +1,8 @@
+package com.tool.java.arrayString.InfixExpression;
+
 import java.util.Stack; 
   
-public class EvaluateString 
+public class EvaluateStringCalc 
 { 
     public static int evaluate(String expression) 
     { 
@@ -111,8 +113,8 @@ public class EvaluateString
     // Driver method to test above methods 
     public static void main(String[] args) 
     { 
-        System.out.println(EvaluateString.evaluate("(10*22+10)*6/2+3")); 
-        System.out.println(EvaluateString.evaluate("100 * 2 + 12")); 
+        System.out.println(EvaluateStringCalc.evaluate("(10*22+10)*6/2+3")); 
+        System.out.println(EvaluateStringCalc.evaluate("100 * 2 + 12")); 
 //        System.out.println(EvaluateString.evaluate("100 * ( 2 + 12 )")); 
 //        System.out.println(EvaluateString.evaluate("100 * ( 2 + 12 ) / 14")); 
     } 

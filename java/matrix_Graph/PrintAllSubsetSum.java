@@ -1,4 +1,5 @@
-package matrix;
+package com.tool.java.matrix_Graph;
+
 
 import java.util.ArrayList;
 

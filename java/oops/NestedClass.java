@@ -1,3 +1,7 @@
+package com.tool.java.oops;
+
+
+
 import com.apple.tesla.PeopleServiceTest.actionTest.NestedClass.InnerClassPublic;
 
 public class NestedClass {

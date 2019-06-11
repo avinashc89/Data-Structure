@@ -1,4 +1,4 @@
-package com.tool.java.arrayString;
+package com.tool.java.arrayString.subsets;
 
 import java.util.ArrayList;
 import java.util.HashMap;

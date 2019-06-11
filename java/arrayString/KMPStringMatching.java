@@ -1,3 +1,4 @@
+package com.tool.java.arrayString;
 
 public class KMPStringMatching
 {
