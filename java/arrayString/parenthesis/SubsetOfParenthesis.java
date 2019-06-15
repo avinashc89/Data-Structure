@@ -1,5 +1,7 @@
 package com.tool.java.arrayString.parenthesis;
 
+import java.util.HashSet;
+
 public class SubsetOfParenthesis
 {
     //Print all combinations of balanced parentheses
@@ -53,12 +55,42 @@ public class SubsetOfParenthesis
         printParenthesis(str, 0, n, 0, 0); 
         return; 
     } 
+    
+    
+    
+    
+    public static HashSet<String> generateParenthesis (int remaining)
+    {
+        HashSet<String> set = new HashSet<String>();
+        if(remaining == 0){
+            set.add("");
+            return set;
+        }
+        
+        HashSet<String> prevSet = generateParenthesis(remaining -1); 
+        for(String s : prevSet)
+        {
+            for(int i=0 ; i< s.length() ; i++) 
+            {
+                if(s.charAt(i) == '('){
+                    String tempFirst = s.substring(0,i+1);     //include ( char => i+1
+                    String tempLast = s.substring(i+1);
+                    String newWord = tempFirst + "()" + tempLast;
+                    set.add(newWord);
+                }
+            }
+            set.add(s+"()");
+        }
+        
+        return set;
+    }
       
     // driver program  
     public static void main (String[] args)  
     { 
         int n = 3; 
         char[] str = new char[2 * n]; 
-        printParenthesis(str, n); 
+    //    printParenthesis(str, n); 
+        generateParenthesis(n);
     } 
 }

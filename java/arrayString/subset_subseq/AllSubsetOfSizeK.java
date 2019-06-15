@@ -1,4 +1,4 @@
-package com.tool.java.arrayString.subsets;
+package com.tool.java.arrayString.subset_subseq;
 
 public class AllSubsetOfSizeK
 { 

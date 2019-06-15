@@ -47,12 +47,12 @@ public class BST {
 			while(currNode!=null)
 			{
 				parentNode = currNode;
-				if(currNode.getKey() < key)
+				if(currNode.getData() < key)
 					currNode = currNode.getRight();
 				else
 					currNode = currNode.getLeft();
 			}		
-			if(key > parentNode.getKey())
+			if(key > parentNode.getData())
 				parentNode.setRight(n1);
 			else
 				parentNode.setLeft(n1);
@@ -66,7 +66,7 @@ public class BST {
 	public void printBST(Node n)
 	{
 		if(n!=null){
-			System.out.println(n.getLeft()+"---"+n.getKey()+"---"+n.getRight());
+			System.out.println(n.getLeft()+"---"+n.getData()+"---"+n.getRight());
 			printBST(n.getLeft());
 			printBST(n.getRight());
 		}
@@ -116,22 +116,22 @@ public class BST {
 		if (root == null) {
 			return true;
 		}
-		if (root.getKey() <= min || root.getKey() >= max) {
+		if (root.getData() <= min || root.getData() >= max) {
 			return false;
 		}
 		// left subtree must be < root.val && right subtree must be > root.val
-		return validate(root.getLeft(), min, root.getKey()) && validate(root.getRight(), root.getKey(), max);
+		return validate(root.getLeft(), min, root.getData()) && validate(root.getRight(), root.getData(), max);
 	}
 	
 	
 	public void printAllElementbetTwoInt(Node root, int k1,int k2)
 	{
 		if(root==null) return;
-		if(root.key  > k1 )
+		if(root.data  > k1 )
 			printAllElementbetTwoInt (root.left, k1,k2);
-		if(root.key  >= k1 && root.key  <= k2 )
-			System.out.println(root.getKey());
-		if(root.key  < k2 )
+		if(root.data  >= k1 && root.data  <= k2 )
+			System.out.println(root.getData());
+		if(root.data  < k2 )
 			printAllElementbetTwoInt (root.right, k1,k2);
 	}
 	
@@ -142,7 +142,7 @@ public class BST {
 		printKthLargestElement(root.right , k);
 		k--;
 		if(k==0)
-			System.out.println(root.key);
+			System.out.println(root.data);
 		
 		printKthLargestElement(root.left ,k);
 	}

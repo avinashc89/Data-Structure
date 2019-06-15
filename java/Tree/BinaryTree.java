@@ -19,7 +19,7 @@ public class BinaryTree {
 		if (node==null)
 			return 0;
 		else
-			return Math.max(node.getKey(),Math.max(biggest(node.getLeft()), biggest(node.getRight())));
+			return Math.max(node.getData(),Math.max(biggest(node.getLeft()), biggest(node.getRight())));
 	}
 
 	
@@ -49,7 +49,7 @@ public class BinaryTree {
 	private static void spiral_Tree_Recursion(Node node, int level, boolean flag) {
 		
 		if(node == null) return;
-		if(level ==1 ) System.out.println(node.key);
+		if(level ==1 ) System.out.println(node.data);
 		else{
 			if(flag)
 			{
@@ -74,12 +74,12 @@ public class BinaryTree {
 			return true;
 		else{
 			if(root.left != null)
-				left_data = root.left.key;
+				left_data = root.left.data;
 
 			if(root.right != null)
-				right_data = root.right.key;
+				right_data = root.right.data;
 
-			if((root.key == left_data + right_data)&&
+			if((root.data == left_data + right_data)&&
 					check_if_sum_of_child_is_parent(root.left) &&
 					check_if_sum_of_child_is_parent(root.right))
 				return true;
@@ -132,8 +132,8 @@ public class BinaryTree {
 	public static  void print_All_Path_With_Sum_N(Node root, int sum,int currSum , StringBuilder result)
 	{
 		if(root ==null) return;
-		currSum += root.key;
-		result = result.append(root.key).append("-");
+		currSum += root.data;
+		result = result.append(root.data).append("-");
 		if(currSum == sum)
 		{
 			System.out.println(result.toString());
@@ -158,7 +158,7 @@ public class BinaryTree {
 			print_all_leaf_node(root.right);
 			
 			if(root.left == null && root.right ==null)
-				System.out.println(root.key);
+				System.out.println(root.data);
 		}
 	}
 	
@@ -215,7 +215,7 @@ public class BinaryTree {
 	    boolean flag = false;  
 	  
 	    /* otherwise check both subtrees */
-	    int subSum = sum - node.key;
+	    int subSum = sum - node.data;
 	  
 	    /* If we reach a leaf node and sum becomes 0 then return true*/
 	    if ( subSum == 0 && node.left == null && node.right == null )
@@ -245,9 +245,9 @@ public class BinaryTree {
 		int left = calculateSum(root.left, max);
 		int right = calculateSum(root.right, max);
  
-		int current = Math.max(root.key, Math.max(root.key + left, root.key + right));
+		int current = Math.max(root.data, Math.max(root.data + left, root.data + right));
  
-		max = Math.max(max, Math.max(current, left + root.key + right));
+		max = Math.max(max, Math.max(current, left + root.data + right));
  
 		return current;
 	}
@@ -259,8 +259,8 @@ public class BinaryTree {
 	     if (n == null) {
 	         return;
 	     }
-	     int newSum = currentSum + n.key;
-	     String newBuffer = buffer + " " + n.key;
+	     int newSum = currentSum + n.data;
+	     String newBuffer = buffer + " " + n.data;
 	     if (newSum == sum) {
 	         System.out.println(newBuffer);
 	     }
@@ -341,8 +341,8 @@ public class BinaryTree {
 	    int[] lsum = new int[1];
 	    int[] rsum  = new int[1];
 	   
-	    lsum[0]= currSum[0] + (root.key);
-	    rsum[0] = currSum[0] + (root.key);
+	    lsum[0]= currSum[0] + (root.data);
+	    rsum[0] = currSum[0] + (root.data);
 	 
 	 
 	    // Recursively remove left and right subtrees
@@ -409,7 +409,7 @@ public class BinaryTree {
             // as horizontal distance. Every time we find a node
             // having same horizontal distance we need to replace
             // the data in the map.
-            map.put(hd, temp.key);
+            map.put(hd, temp.data);
  
             // If the dequeued node has a left child add it to the
             // queue with a horizontal distance hd-1.
@@ -441,4 +441,19 @@ public class BinaryTree {
             System.out.print(me.getValue()+" ");
         }
     }
+	
+	
+	static boolean identicalTrees(Node a, Node b)  
+    { 
+        if (a == null && b == null) 
+            return true; 
+              
+        if (a != null && b != null)  
+            return (a.data == b.data 
+                    && identicalTrees(a.left, b.left) 
+                    && identicalTrees(a.right, b.right)); 
+   
+        return false; 
+    } 
+   
 }

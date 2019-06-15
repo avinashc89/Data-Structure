@@ -6,17 +6,17 @@ import java.util.Date;
 public final class Immutable {    //class as final
 	
 	private final Integer age ;			// instance variable as final
-	private final Employee emp;
+	private final Employeee emp;
 	private final String name;
 	
 	//make sure if instance variable are immutable - If mutable, handle in the constructor accordingly
 	
-	public Immutable(String name, Integer age, Employee emp)
+	public Immutable(String name, Integer age, Employeee emp)
 	{
 		System.out.println("const");
 		this.name = name;
 		this.age = age;
-		this.emp = new Employee(emp.getCompany());
+		this.emp = new Employeee(emp.getCompany());
 	}
 	
 	//No setter method
@@ -24,7 +24,7 @@ public final class Immutable {    //class as final
 	public Integer getAge() {
 		return age;
 	}
-	public Employee getEmp() {
+	public Employeee getEmp() {
 		return emp;
 	}
 	public String getName() {
@@ -39,7 +39,7 @@ public final class Immutable {    //class as final
 	
 	public static void main(String[] args) {
 		
-		Employee e = new Employee("tcs");
+		Employeee e = new Employeee("tcs");
 		Immutable a = new Immutable("abc", 12, e);
 		
 		System.out.println("first:"+a);
@@ -63,9 +63,9 @@ public final class Immutable {    //class as final
 
 
 
-class Employee
+class Employeee
 {
-	public Employee(String company)
+	public Employeee(String company)
 	{
 		this.company = company;
 	}
@@ -82,12 +82,10 @@ class Employee
 	@Override
 	public boolean equals(Object o2)
 	{
-		Employee e2 = (Employee)o2;
+		Employeee e2 = (Employeee)o2;
 		if(this.getCompany() == e2.getCompany())
 			return true;
 		return false;
 		
 	}
-	
-	
 }
