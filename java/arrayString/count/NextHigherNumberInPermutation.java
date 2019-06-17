@@ -1,4 +1,4 @@
-package com.tool.java.arrayString;
+package com.tool.java.arrayString.count;
 
 import java.util.ArrayList;
 import java.util.Collections;

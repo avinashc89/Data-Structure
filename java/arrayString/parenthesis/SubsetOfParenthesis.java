@@ -90,7 +90,7 @@ public class SubsetOfParenthesis
     { 
         int n = 3; 
         char[] str = new char[2 * n]; 
-    //    printParenthesis(str, n); 
-        generateParenthesis(n);
+        printParenthesis(str, n); 
+        System.out.println(generateParenthesis(n));
     } 
 }

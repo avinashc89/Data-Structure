@@ -99,8 +99,15 @@ public class BinaryTree {
 	private static void recConnect(Node n)
 	{
 		if(n == null) return;
-		if(n.left !=null) n.left.next = n.right;
-		if(n.right != null) n.right.next = (n.next !=null )?n.next.left : null;
+		if(n.left !=null) 
+		    n.left.next = n.right;
+		if(n.right != null) 
+		    n.right.next = (n.next !=null )?n.next.left : null;
+		
+		recConnect(n.right);
+		recConnect(n.left);
+		
+		
 	}
 	
 	/************************************************************************************************/
@@ -117,8 +124,10 @@ public class BinaryTree {
 			{
 				Node n = q.peek();
 				q.remove();
-				if(n.left!=null)q.add(n.left);
-				if(n.right!=null)q.add(n.right);
+				if(n.left!=null)
+				    q.add(n.left);
+				if(n.right!=null)
+				    q.add(n.right);
 				
 				n.next = q.peek();
 			}
@@ -129,6 +138,69 @@ public class BinaryTree {
 		}
 	}
 
+	/************************************************************************************************/
+
+	public void connectRecur(Node p)  
+    { 
+        // Base case 
+        if (p == null) 
+            return; 
+   
+        /* Before setting nextRight of left and right children, set nextRight 
+           of children of other nodes at same level (because we can access  
+           children of other nodes using p's nextRight only) */
+        if (p.next != null) 
+            connectRecur(p.next); 
+   
+        /* Set the next pointer for p's left child */
+        if (p.left != null) 
+        { 
+            if (p.right != null)  
+            { 
+                p.left.next = p.right; 
+                p.right.next = getNextRight(p); 
+            }  
+            else
+                p.left.next = getNextRight(p); 
+   
+            /* Recursively call for next level nodes.  Note that we call only 
+             for left child. The call for left child will call for right child */
+            connectRecur(p.left); 
+        } 
+           
+        /* If left child is NULL then first node of next level will either be 
+         p->right or getNextRight(p) */
+        else if (p.right != null)  
+        { 
+            p.right.next = getNextRight(p); 
+            connectRecur(p.right); 
+        }  
+        else
+            connectRecur(getNextRight(p)); 
+    } 
+   
+    /* This function returns the leftmost child of nodes at the same 
+       level as p. This function is used to getNExt right of p's right child 
+       If right child of p is NULL then this can also be used for  
+       the left child */
+    Node getNextRight(Node p)  
+    { 
+        Node temp = p.next; 
+   
+        /* Traverse nodes at p's level and find and return 
+         the first node's first child */
+        while (temp != null)  
+        { 
+            if (temp.left != null) 
+                return temp.left; 
+            if (temp.right != null) 
+                return temp.right; 
+            temp = temp.next; 
+        } 
+   
+        // If all the nodes at p's level are leaf nodes then return NULL 
+        return null; 
+    } 
 	/************************************************************************************************/
 	//printAllPathWithSumN(root,sum,0,"")
 	public static  void print_All_Path_With_Sum_N(Node root, int sum,int currSum , StringBuilder result)
@@ -299,6 +371,28 @@ public class BinaryTree {
 	
 	//remove_nodes_on_root_to_leaf_path_less_than_K
 	//removeShortPathNodesUtil(root, 1, k)
+	/*
+	 
+            	                1
+                       /      \
+                     2          3
+                  /     \         \
+                4         5        6
+              /                   /
+             7                   8 
+            Input: Root of above Binary Tree
+                   k = 4
+            
+            Output: The tree should be changed to following  
+                       1
+                    /     \
+                  2          3
+                 /             \
+               4                 6
+             /                  /
+            7                  8
+	 
+	 */
 	public static Node remove_nodes_pathLen_less_than_K(Node root, int level, int k)
 	{
 	    //Base condition
@@ -515,7 +609,6 @@ public class BinaryTree {
 	   
 	 public void arrayToBST (ArrayList<Integer> arr, Node root, int index) 
 	 { 
-	     // Base Case 
 	     if (root == null) 
 	       return; 
 	   
@@ -530,4 +623,25 @@ public class BinaryTree {
 	 } 
 	   
 	 /************************************************************************************************/
+	 
+	 
+	 public boolean isSymmetric(Node root1, Node root2)
+	    {
+	        if (root1 == null && root2 == null)
+	        {
+	            return true;
+	        }
+	        else if (root1 == null || root2 == null)
+	        {
+	            return false;
+	        }
+	         
+	        if (root1.data == root2.data)
+	        {
+	            return isSymmetric(root1.left, root2.right) && isSymmetric(root1.right, root2.left);
+	        }
+	        
+	        return false;
+	    }
+	 
 }

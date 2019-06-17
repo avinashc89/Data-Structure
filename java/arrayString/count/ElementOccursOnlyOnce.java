@@ -1,4 +1,4 @@
-package com.tool.java.arrayString;
+package com.tool.java.arrayString.count;
 
 import com.tool.java.matrix_Graph.Util;
 
