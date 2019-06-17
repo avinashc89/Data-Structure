@@ -57,5 +57,18 @@ public class Node {
         
         return root;
 	}
+	
+	public static Node getSampleBST()
+    {
+        Node root = new Node(5);              /*    5            */
+        root.left    = new Node(2);          /*    / \           */
+        root.right   = new Node(6);          /*    2   6         */
+        root.left.left = new Node(1);        /*   / \   \       */
+        root.left.right = new Node(4);       /*  1   4   8       */
+        root.right.right = new Node(8);      /*     /            */
+        root.left.right.left = new Node(3);  /*    3             */
+        
+        return root;
+    }
 
 }

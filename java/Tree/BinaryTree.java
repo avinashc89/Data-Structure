@@ -1,5 +1,7 @@
 package com.tool.java.Tree;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -442,8 +444,10 @@ public class BinaryTree {
         }
     }
 	
+	/************************************************************************************************/
+
 	
-	static boolean identicalTrees(Node a, Node b)  
+	public static boolean identicalTrees(Node a, Node b)  
     { 
         if (a == null && b == null) 
             return true; 
@@ -456,4 +460,74 @@ public class BinaryTree {
         return false; 
     } 
    
+	
+	/************************************************************************************************/
+	
+	public int checkBalanceBT(Node currentNode)
+    {
+        if (currentNode == null) 
+        {
+            return 0;
+        }
+         
+        // check if left sub-tree is balanced
+        int leftSubtreeHeight = checkBalanceBT(currentNode.left);
+        if (leftSubtreeHeight == -1) 
+            return -1;
+         
+        // check if right sub-tree is balanced
+        int rightSubtreeHeight = checkBalanceBT(currentNode.right);
+        if (rightSubtreeHeight == -1) return -1;
+         
+        // if both sub-trees are balanced, check the difference of heights
+        // should be less than or equal to 1 
+        if (Math.abs(leftSubtreeHeight - rightSubtreeHeight) > 1)
+        {
+            return -1;
+        }
+ 
+        // if tree rooted at this node is balanced, return height if tree rooted at this this node
+        return (Math.max(leftSubtreeHeight, rightSubtreeHeight) + 1);
+    }
+     
+	/************************************************************************************************/
+	
+	public void convertBTtoBST (Node root)
+	{
+	    if(root == null) 
+	        return; 
+	    
+	    ArrayList<Integer> inorderList = new ArrayList<Integer>();
+	    
+	    storeInorder (root, inorderList); 
+	    Collections.sort(inorderList);
+	    arrayToBST(inorderList, root, 0);
+	}
+	
+	 public static void storeInorder(Node root, ArrayList<Integer> preorder)
+	    {
+	        if(root == null)
+	            return;
+	        storeInorder(root.left, preorder);
+	        preorder.add(root.data);
+	        storeInorder(root.right, preorder);
+	    }
+	   
+	 public void arrayToBST (ArrayList<Integer> arr, Node root, int index) 
+	 { 
+	     // Base Case 
+	     if (root == null) 
+	       return; 
+	   
+	     /* first update the left subtree */
+	     arrayToBST (arr, root.left, index); 
+	   
+	     /* Now update root's data and increment index */
+	     root.data = arr.get(index); 
+	     index++; 
+	   
+	     arrayToBST (arr, root.right, index); 
+	 } 
+	   
+	 /************************************************************************************************/
 }

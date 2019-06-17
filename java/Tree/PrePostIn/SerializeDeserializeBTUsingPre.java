@@ -1,8 +1,10 @@
-package com.tool.java.Tree;
+package com.tool.java.Tree.PrePostIn;
 
 import java.util.ArrayList;
+import com.tool.java.Tree.BinaryTree;
+import com.tool.java.Tree.Node;
 
-public class SerializeDeserializeBinaryTree
+public class SerializeDeserializeBTUsingPre
 {
 
     static ArrayList<Integer> list = new ArrayList<Integer>();

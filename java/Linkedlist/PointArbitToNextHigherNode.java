@@ -1,7 +1,22 @@
 package com.tool.java.Linkedlist;
 
-public class MergeSortList
+public class PointArbitToNextHigherNode
 {
+
+    //small modification in merge sort list -> set the arbit to next and sort the using arbit
+    //step 1
+    private Node populateArbit(Node start) 
+    { 
+        Node temp = start; 
+  
+        // Copy next pointers to arbit pointers 
+        while (temp != null) 
+        { 
+            temp.arbit = temp.next; 
+            temp = temp.next; 
+        } 
+        return mergeSort(start); 
+    } 
     
     // Move fastptr by two and slow ptr by one. Finally slowptr will point to middle node 
     Node getMiddle(Node h) 
@@ -9,19 +24,19 @@ public class MergeSortList
         if (h == null) 
             return h; 
         
-        Node fastptr = h.next; 
+        Node fastptr = h.arbit; 
         Node slowptr = h; 
         
-        while (fastptr != null && fastptr.next!=null) { 
-                slowptr = slowptr.next; 
-                fastptr = fastptr.next.next; 
+        while (fastptr != null && fastptr.arbit!=null) { 
+                slowptr = slowptr.arbit; 
+                fastptr = fastptr.arbit.arbit; 
             } 
         
         //this is in middle now
         return slowptr; 
     } 
     
-    //step 1
+    //step 2
     Node mergeSort(Node h) 
     { 
         // Base case : if head is null 
@@ -31,10 +46,10 @@ public class MergeSortList
   
         // get the middle of the list 
         Node middle = getMiddle(h); 
-        Node nextofmiddle = middle.next; 
+        Node nextofmiddle = middle.arbit; 
   
         // set the next of middle Node to null 
-        middle.next = null; 
+        middle.arbit = null; 
   
         // Apply mergeSort on left list 
         Node left = mergeSort(h); 
@@ -48,7 +63,7 @@ public class MergeSortList
     } 
     
     
-    //step 2
+    //step 3
     static Node sortedMerge(Node h1, Node h2) 
     { 
         if (h1 == null) 
@@ -59,15 +74,13 @@ public class MergeSortList
         // start with the linked list 
         // whose head data is the least 
         if (h1.data < h2.data) { 
-            h1.next = sortedMerge(h1.next, h2); 
+            h1.arbit = sortedMerge(h1.arbit, h2); 
             return h1; 
         } 
         else { 
-            h2.next = sortedMerge(h1, h2.next); 
+            h2.arbit = sortedMerge(h1, h2.arbit); 
             return h2; 
         } 
     } 
     
-    
-
 }

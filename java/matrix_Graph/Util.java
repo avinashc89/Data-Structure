@@ -27,25 +27,21 @@ public class Util
     } 
     
     public static void printArray(int mat[]){ 
-        System.out.println("_____________________");
+        System.out.println("\n_____________________");
         for (int i = 0; i < mat.length; i ++){ 
                 System.out.print( mat[i] +"  "); 
                 
         } 
-        System.out.println(""); 
-        
-        System.out.println("_____________________");
+        System.out.println("\n_____________________");
     }
     
     public static void printArray(char mat[]){ 
-        System.out.println("_____________________");
+        System.out.println("\n_____________________");
         for (int i = 0; i < mat.length; i ++){ 
                 System.out.print( mat[i] +"  "); 
                 
         } 
-        System.out.println(""); 
-        
-        System.out.println("_____________________");
+        System.out.println("\n_____________________");
     }
 
 }

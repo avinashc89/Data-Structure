@@ -1,6 +1,6 @@
 package com.tool.java.Linkedlist;
 
-public class LargestNodeInRightOfEachNode
+public class PointArbitToNextHigherNodeInRight
 {
     
     static Node reverse(Node head)  

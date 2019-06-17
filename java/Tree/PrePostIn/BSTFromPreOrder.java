@@ -1,7 +1,8 @@
-package com.tool.java.Tree;
+package com.tool.java.Tree.PrePostIn;
 
 
-import java.util.*; 
+import java.util.*;
+import com.tool.java.Tree.Node; 
 
 /*
  1. Create an empty stack.
