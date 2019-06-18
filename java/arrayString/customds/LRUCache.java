@@ -1,4 +1,4 @@
-package com.tool.java.arrayString;
+package com.tool.java.arrayString.customds;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.tool.java.matrix_Graph;
+ package com.tool.java.arrayString;
 
 
 public class Combination01_
@@ -20,15 +20,12 @@ public class Combination01_
             {
                 // replace '?' with 0 and 1
                 pattern[i] = ch;
-                // recur for the remaining pattern
                 printAllCombinations(pattern, i + 1);
             }
             pattern[i] = '?';
             return;
         }
  
-        // if the current character is 0 or 1, ignore it and
-        // recur for the remaining pattern
         printAllCombinations(pattern, i + 1);
     }
  

@@ -2,6 +2,12 @@ package com.tool.java.arrayString.substring;
 
 public class AnagramSubstring
 {
+    /*
+     Input:  txt[] = "BACDGABCDA"  pat[] = "ABCD"
+     Output:   Found at Index 0
+               Found at Index 5
+               Found at Index 6
+     */
     //1) The first count array store frequencies of characters in pattern.
    // 2) The second count array stores frequencies of characters in current window of text.
     
@@ -39,7 +45,7 @@ public class AnagramSubstring
             if (compare(countP, countTW)) 
                 System.out.println("Found at Index " + 
                                           (i - M)); 
-            (countTW[txt.charAt(i)])++; 
+            countTW[txt.charAt(i)]++;                 //increase the count of ith char and decrease the count of i-mth char
             countTW[txt.charAt(i-M)]--; 
         } 
         
