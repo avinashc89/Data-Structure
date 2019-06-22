@@ -1,8 +1,8 @@
 package com.tool.java.Tree.PrePostIn;
 
 import java.util.ArrayList;
-import com.tool.java.Tree.BinaryTree;
 import com.tool.java.Tree.Node;
+import com.tool.java.Tree.BT.BinaryTree;
 
 public class SerializeDeserializeBTUsingPre
 {

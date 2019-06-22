@@ -128,7 +128,6 @@ public class PostfixPrefixInfix
                 {
                     stack.pop();
                 }
-                     
             } 
             else // an operator is encountered 
             { 

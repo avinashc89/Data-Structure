@@ -7,6 +7,7 @@ public class Node {
 	public Node right;
 	public int data;
 	public Node next;
+	public Node parent;
 	public int hd;
 	
 	public Node(int data)
@@ -69,6 +70,15 @@ public class Node {
         root.left.right.left = new Node(3);  /*    3             */
         
         return root;
+    }
+	
+	public static void printBST(Node n)
+    {
+        if(n!=null){
+            System.out.println(n.getLeft()+"---"+n.getData()+"---"+n.getRight()+"---"+n.next);
+            printBST(n.getLeft());
+            printBST(n.getRight());
+        }
     }
 
 }

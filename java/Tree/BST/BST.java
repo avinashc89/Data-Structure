@@ -1,4 +1,6 @@
-package com.tool.java.Tree;
+package com.tool.java.Tree.BST;
+
+import com.tool.java.Tree.Node;
 
 public class BST {
 
@@ -19,17 +21,13 @@ public class BST {
 		obj.insert(21);
 		obj.insert(13);
 		obj.insert(20);
-
-
 		obj.printBST(obj.getRoot());
-
 		System.out.println(obj.maxHeight(obj.getRoot()));
 		System.out.println(obj.size(obj.getRoot()));
 		System.out.println(isValidBST(obj.getRoot()));
-
 	}
 	
-	
+	/*****************************************************************************/
 	/**
 	 * insert key in tree
 	 * @param key
@@ -59,6 +57,7 @@ public class BST {
 		}
 	}
 
+	/*****************************************************************************/
 	/**
 	 * prints tree for the given node n
 	 * @param n
@@ -72,6 +71,7 @@ public class BST {
 		}
 	}
 
+	/*****************************************************************************/
 	/**
 	 * return the maximum height from the 
 	 * @param node
@@ -92,6 +92,7 @@ public class BST {
 		} 
 	} 
 
+	/*****************************************************************************/
 	/**
 	 * return the total number of nodes in the tree
 	 * @param node
@@ -109,6 +110,12 @@ public class BST {
 		}
 	}
 
+	/*****************************************************************************/
+	/**
+     * return if BST is valid
+     * @param node
+     * @return
+     */
 	public static boolean isValidBST(Node root) {
 		return validate(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
@@ -124,6 +131,12 @@ public class BST {
 	}
 	
 	
+	/*****************************************************************************/
+	/**
+     * Print all nodes between k1 & k2
+     * @param node
+     * @return
+     */
 	public void printAllElementbetTwoInt(Node root, int k1,int k2)
 	{
 		if(root==null) return;
@@ -135,6 +148,12 @@ public class BST {
 			printAllElementbetTwoInt (root.right, k1,k2);
 	}
 	
+	/*****************************************************************************/
+	/**
+     * Print kth largest in BST
+     * @param node
+     * @return
+     */
 	public void printKthLargestElement(Node root,int k)
 	{
 		if(k<0) return;
@@ -156,5 +175,33 @@ public class BST {
 	public void setRoot(Node root) {
 		this.root = root;
 	}
+	
+	/*****************************************************************************/
+	/** Split BST - https://www.coursera.org/lecture/data-structures/split-and-merge-22BgE
+	 * @param root
+	 * @param V -> value used to split
+	 * @return Node[root of left tree1, root of right tree] -> tree is split into left tree1 & right tree
+	 */
+	public Node[] splitBST(Node node, int V) {
+	       Node[] res = new Node[2];
+	       if (node == null) return res;
+	       
+	       // if node's data is less than V,  
+	       //    then that node belongs to left tree. => res[0] = node and now find the split in right tree.
+	       if (node.data <= V) {
+	           res[0] = node;
+	           Node[] rightRes = splitBST(node.right, V);  //=> this gives rightRes[0] is less than k and  rightRes[1] is greater than k. add rightRes[0] to res[0]. 
+	           node.right = rightRes[0];
+	           res[1] = rightRes[1];
+	       } 
+	       //similarly in split is in left tree. res[1] = node and leftRes[1] also in res[1]
+	       else {
+	           res[1] = node;
+	           Node[] leftRes = splitBST(node.left, V);
+	           node.left = leftRes[1];
+	           res[0] = leftRes[0];
+	       }
+	       return res;
+	   }
 
 }

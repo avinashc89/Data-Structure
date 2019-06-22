@@ -1,7 +1,8 @@
-package com.tool.java.Tree;
+package com.tool.java.Tree.BT;
 
-  
-class BoundaryTraversalOfBT { 
+import com.tool.java.Tree.Node;
+
+class TraversalBoundaryBT { 
     
     public static int sum =0;
     Node root; 
@@ -87,7 +88,7 @@ class BoundaryTraversalOfBT {
     // Driver program to test above functions 
     public static void main(String args[]) 
     { 
-        BoundaryTraversalOfBT tree = new BoundaryTraversalOfBT(); 
+        TraversalBoundaryBT tree = new TraversalBoundaryBT(); 
         tree.root = new Node(20); 
         tree.root.left = new Node(8); 
         tree.root.left.left = new Node(4); 
