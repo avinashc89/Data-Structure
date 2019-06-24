@@ -1,4 +1,4 @@
-package com.tool.java.matrix_Graph;
+package com.tool.java.DP.matrix_Graph;
 
 
 public class SearchMatrix
@@ -12,7 +12,7 @@ public class SearchMatrix
      
      Time Complexity: O(m + n) 
      */
-    
+    // search from bottom left / top right
     public boolean searchMatrix(int[][] matrix, int target) {
         int m=matrix.length-1;
         int n=matrix[0].length-1;

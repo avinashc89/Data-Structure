@@ -1,4 +1,4 @@
-package com.tool.java.matrix_Graph;
+package com.tool.java.DP.matrix_Graph;
 
 
 import java.io.*; 
@@ -28,11 +28,14 @@ public class GraphIsLinear {
         adj[w].add(v); 
     } 
   
-    // Returns true if the graph is linear,  
+    // Returns true if the graph is linear,  =>
     // else false. 
     /**
      * @return
      */
+    //  1 . Nodes should have only two adjacent nodes and 
+    //  2.  Total no of node with two adj, should be V-2, V is the total nodes.
+    
     boolean isLinear() 
     { 
         // If the number of vertice is 1 then 

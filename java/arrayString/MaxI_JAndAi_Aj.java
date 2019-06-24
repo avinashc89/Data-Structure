@@ -1,6 +1,6 @@
 package com.tool.java.arrayString;
 
-import com.tool.java.matrix_Graph.Util;
+import com.tool.java.Util;
 
 public class MaxI_JAndAi_Aj
 { 

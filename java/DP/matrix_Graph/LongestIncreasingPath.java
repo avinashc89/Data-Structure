@@ -1,28 +1,36 @@
-package com.tool.java.matrix_Graph;
+package com.tool.java.DP.matrix_Graph;
 
 
 public class LongestIncreasingPath {
     
-    private static final int[][] dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-    private int[][] dp;
+    /*
+     
+     Input: nums = 
+                [
+                  [9,9,4],
+                  [6,6,8],
+                  [2,1,1]
+                ] 
+                Output: 4 
+                =>9,6,2,1
 
-    public int longestIncreasingPath(int[][] matrix) {
+     */
+    private static final int[][] dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    private static int[][] dp;
+
+    public static int longestIncreasingPath(int[][] matrix) {
         if(matrix.length == 0){
             return 0;
         }
         if(matrix.length == 1 && matrix[0].length == 1){
             return matrix[0][0];
         }
-
-        //dp table to save max path already computed
+        
         dp = new int[matrix.length][matrix[0].length];
         int maxLen = 0;
         for(int i = 0; i < matrix.length; i++){
-            //try to walk down from wach cell
             for(int j = 0; j< matrix[0].length; j++){
-                //walk down from current position   
                 int pathLen = 1+walk(matrix, i, j);
-                //uodate max length by current walk path len
                 maxLen = Math.max(maxLen, pathLen);
             }
         }
@@ -30,7 +38,7 @@ public class LongestIncreasingPath {
         return maxLen;
     }
 
-    public int walk(int[][] mat, int i, int j){
+    public static int walk(int[][] mat, int i, int j){
         if(dp[i][j] > 0){
             return dp[i][j];
         }
@@ -57,11 +65,23 @@ public class LongestIncreasingPath {
         return maxLen;
     }
 
-    private boolean isSafe(int mat[][], int i, int j){
+    private static boolean isSafe(int mat[][], int i, int j){
         if(i >= mat.length || i < 0 || j >= mat[0].length || j < 0){
             return false;
         }
 
         return true;
+    }
+    
+    public static void main (String[] args)
+    {
+        int[][] nums = 
+        {
+             {9,9,4},
+             {6,6,8},
+             {2,1,1}
+             } ;
+        
+        System.out.println(longestIncreasingPath(nums));
     }
 }

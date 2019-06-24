@@ -1,4 +1,4 @@
-package com.tool.java.arrayString;
+package com.tool.java.arrayString.substring;
 
 public class KMPStringMatching
 {

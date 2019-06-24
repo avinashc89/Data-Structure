@@ -1,6 +1,6 @@
 package com.tool.java.arrayString.numbers;
 
-import com.tool.java.matrix_Graph.Util;
+import com.tool.java.Util;
 
 public class PrintDuplicates
 {
@@ -12,9 +12,9 @@ public class PrintDuplicates
         int fl = 0; // to print -1 if flag is not set - no duplicates found
         for (i = 0; i < n; i++)  
         { 
-            if (arr[arr[i] % n] >= n)  
+            if (arr[arr[i] % n] >= n)  // means it is a duplicate. since it is greater than n.
             { 
-                if (arr[arr[i] % n] < 2 * n)  
+                if (arr[arr[i] % n] < 2 * n)  // if it is increased by only n, then it is first occurance of the duplicate
                 { 
                     System.out.print( arr[i] % n + " "); 
                     fl = 1; 
@@ -22,7 +22,7 @@ public class PrintDuplicates
             } 
             arr[arr[i] % n] += n; 
             
-            Util.printArray(arr);
+            //Util.printArray(arr);
         } 
       
         // If flag variable is not set 

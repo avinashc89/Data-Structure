@@ -36,5 +36,7 @@ public class TraversalLevelOrderBT
             System.out.println(); 
         } 
     }
+    
+    //we can also use two queues for level order traversal. TraversalSpiralBT is modifies to insert in order-> left, right in both queues
 
 }

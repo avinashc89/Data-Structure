@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 public class LongestSubsetWithConsecutiveNumbers
 {
+    //Longest Consecutive Sequence
     //put in hashset -> start from 0 -> and check if a[0]-1 in hashset. 
     //if no, then thats the start of set and while loop to find next in hashset
     
@@ -35,7 +36,7 @@ public class LongestSubsetWithConsecutiveNumbers
   
     public static void main(String args[]) 
     { 
-        int arr[] =  {1, 9, 3, 10, 4, 20, 2}; 
+        int arr[] =  {1, 9, 3, 10, 4, 20, 2}; //4 => 1,2,3,4
         int n = arr.length; 
         System.out.println("Length of the Longest consecutive subsequence is " + 
                            findLongestConseqSubseq(arr,n)); 

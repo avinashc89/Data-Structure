@@ -96,11 +96,10 @@ public class Subset_Problems {
 
 		for (int i = 1; i <= arr.length; i++) {
 			for (int j = 1; j <= sum; j++) {
-				if (j - arr[i - 1] >= 0) {
-					T[i][j] = T[i - 1][j - arr[i - 1]] || T[i - 1][j];
-				} else {
-					T[i][j] = T[i-1][j];
-				}
+			    if(j < arr[i-1])
+                    T[i][j] = T[i-1][j];                //copy the top value
+                else 
+                    T[i][j] = T[i-1][j- arr[i-1]] ||  T[i-1][j];  // copy T[one step up, a[i] steps left] || top value
 			}
 		}
 		return T[arr.length][sum];
