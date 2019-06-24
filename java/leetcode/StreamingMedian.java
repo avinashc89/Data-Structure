@@ -1,9 +1,9 @@
-package com.tool.java.arrayString.stream;
+package com.tool.java.leetcode;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-public class MedianOfStream
+public class StreamingMedian
 {
 
     // method to calculate med of stream  

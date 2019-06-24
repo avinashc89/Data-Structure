@@ -7,7 +7,7 @@ public class LoggerRateLimiter
     
     class Logger {
 
-        Map<String,Integer> messageMap;
+        HashMap<String, Integer> messageMap;
         /** Initialize your data structure here. */
         public Logger() {
             messageMap = new HashMap<String,Integer>();
