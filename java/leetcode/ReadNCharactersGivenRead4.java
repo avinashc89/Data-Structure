@@ -17,7 +17,7 @@ public class ReadNCharactersGivenRead4
         int total = 0;
         while (total < n) {                                     // totally we can read upto n, if total read is less than n, then proceed
             int count = read4(tmp);                             // call read4() => this can give 4/3/2/1/0
-            count = Math.min(count, total-n);                   // count can be whatever read or the available space.
+            count = Math.min(count, n-total);                   // count can be whatever read or the available space.
             for( int i=0; i< count ; i++) {                     // thus count is achieved  
                 buf[total++] = tmp[i];                          // copy the content to buf and increase the total read
             }
