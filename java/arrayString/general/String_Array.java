@@ -1,4 +1,4 @@
-package com.tool.java.arrayString;
+package com.tool.java.arrayString.general;
 
 import java.util.ArrayList;
 import java.util.Arrays;

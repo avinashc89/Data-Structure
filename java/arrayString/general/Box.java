@@ -1,4 +1,4 @@
-package com.tool.java.arrayString;
+package com.tool.java.arrayString.general;
 
 public class Box implements Comparable<Box>{
 	

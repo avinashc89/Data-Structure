@@ -32,9 +32,9 @@ public class MergeKSortedChunks
     }
     
     class Triplet implements Comparable<Triplet>{
-        int pos;
-        int val;
-        int index;
+        int pos;   // i -> position of the chunk
+        int val;   // value
+        int index; //next index
         @Override
         public int compareTo(Triplet o) {
             if(val <= o.val){
