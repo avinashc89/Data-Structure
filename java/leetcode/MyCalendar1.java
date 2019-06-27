@@ -13,6 +13,7 @@ public class MyCalendar1
         slots1 = new TreeMap<Integer,Integer>();
     }
 
+    // method1 : traverse thro array and check if start and end are either greater/lesser than current slot
     public boolean book(int start, int end) {
         for (Integer[] slot : slots)
         {
@@ -27,11 +28,21 @@ public class MyCalendar1
         return true;
     }
     
+    /*method2. Using treeMap - 
+       get the prev start time slot s1 using floorkey, 
+          if start is less than s1.end time
+              retrun false
+     
+       get the next start time using 
+           if end is greater than next start
+               return false
+     
+     */
     public boolean book1(int start, int end) {
        
         Integer prevSlotX = slots1.floorKey(start);
-        
-        if (prevSlotX!=null && slots1.get(prevSlotX) > start ) return false;
+        if (prevSlotX!=null && slots1.get(prevSlotX) > start )
+            return false;
             
         Integer nextSlotX = slots1.ceilingKey(start);
         if (nextSlotX!=null && nextSlotX < end) return false;

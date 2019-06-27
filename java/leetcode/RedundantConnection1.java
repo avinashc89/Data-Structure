@@ -1,6 +1,6 @@
 package com.tool.java.leetcode;
 
-public class RemoveEdgeGraphToTree
+public class RedundantConnection1
 {
     /*
      

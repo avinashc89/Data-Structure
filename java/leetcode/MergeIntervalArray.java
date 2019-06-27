@@ -4,7 +4,12 @@ import java.util.*;
 
 public class MergeIntervalArray
 {
+    // sort using starttime and store 0th time in curr, iterate comparing curr time and next time a[i].
+    // if curr end time is greater then next start time, make curr end time = next end time.
+     //  else add curr to result and make curr = next and proceed..
+    
    //[starttime, endtime] => merge if overlaps
+    
     public int[][] merge(int[][] intervals) 
     {
         List<int[]> res=new ArrayList<int[]>();

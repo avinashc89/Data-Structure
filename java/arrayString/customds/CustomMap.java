@@ -1,4 +1,4 @@
-package com.tool.java.leetcode;
+package com.tool.java.arrayString.customds;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ class HashNode<K, V>
     } 
 } 
   
-class Map<K, V> 
+class CustomMap<K, V> 
 { 
     // list is used to store array of chains 
     private ArrayList<HashNode<K, V>> list; 
@@ -28,7 +28,7 @@ class Map<K, V>
   
     // Constructor (Initializes capacity, size and 
     // empty chains. 
-    public Map() 
+    public CustomMap() 
     { 
         list = new ArrayList<>(); 
         capacity = 10; 
@@ -158,7 +158,7 @@ class Map<K, V>
     // Driver method to test Map class 
     public static void main(String[] args) 
     { 
-        Map<String, Integer>map = new Map<>(); 
+        CustomMap<String, Integer>map = new CustomMap<>(); 
         map.add("this",1 ); 
         map.add("coder",2 ); 
         map.add("this",4 ); 

@@ -5,7 +5,8 @@ import java.util.*;
 public class MyCalendar2
 {
     //  https://leetcode.com/problems/meeting-rooms-ii/discuss/203658/HashMapTreeMap-resolves-Scheduling-Problem
-   
+    // double booking is allowed. triple booking is not allowed
+    
     public MyCalendar2() {
     }
 

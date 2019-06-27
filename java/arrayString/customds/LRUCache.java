@@ -18,7 +18,11 @@ class MapNode{
 // least recently used can be fetched from end
 public class LRUCache {
     int capacity;
+    
+    //Map to store key,value(in mapnode)
     HashMap<Integer, MapNode> map = new HashMap<Integer, MapNode>();
+    
+    //double linkedlist => to maintain the recently used in the head
     MapNode head=null;
     MapNode end=null;
  
@@ -26,6 +30,7 @@ public class LRUCache {
         this.capacity = capacity;
     }
  
+    // when we get the value for key, remove from linkedlist and make it as head
     public int get(int key) {
         if(map.containsKey(key)){
             MapNode n = map.get(key);
@@ -37,7 +42,16 @@ public class LRUCache {
         return -1;
     }
  
-    /*This method will delete node*/
+    /*This method will delete node
+     to delete the node,
+             node's prev's next -> node's next
+             node's prev is null then it the head. => simple make head to node's next
+             
+      similarly 
+             node's next's pev -> node's prev
+             node's next is null then it the end. => simple make end to node's prev
+             
+     */
     public void delete(MapNode node){
         if(node.prev!=null){
             node.prev.next = node.next;
@@ -53,7 +67,17 @@ public class LRUCache {
  
     }
  
-    /*This method will make passed node as head*/
+    /*This method will make passed node as head
+     * to make the node as head,
+     *      node.next = curr head
+     *      node.prev = null;
+     *      
+     *       if the curr head is present then its prev points to node.
+     *  
+     *  head = node
+     *  
+     *  if it is the start, end = head
+     */
     public void setHead(MapNode node){
         node.next = head;
         node.prev = null;
@@ -67,6 +91,8 @@ public class LRUCache {
             end = head;
     }
  
+    // if key is new, create the MapNode and put it in the head => if the capacity is full, delete the end and put the node in the head
+    // if key already present, remove from the linkedlist and update the value in map and put it in head
     public void set(int key, int value) {
         if(map.containsKey(key)){
             // update the old value

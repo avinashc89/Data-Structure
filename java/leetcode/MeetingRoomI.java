@@ -61,7 +61,7 @@ public class MeetingRoomI
         return true;
     }
     
-    
+    //o(nlogn)
     public boolean canAttendMeetings(Interval[] intervals) {
         int len=intervals.length;
         if(len==0){
