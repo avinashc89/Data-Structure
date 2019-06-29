@@ -1,7 +1,9 @@
 package com.tool.java.Tree.BT;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
@@ -118,16 +120,37 @@ public class ViewBT
      * 
      * @param root
      */
-    public static int currentLevel =0;
-    public void rightViewRecur(Node root, int nextLevel){
-        if(root==null) return;
-        if(currentLevel<nextLevel){
-            System.out.print ("  " + root.data);
-            currentLevel = nextLevel;
+    static List<Integer> rightview = new ArrayList<Integer>();
+    
+    public List<Integer> rightSideView(Node root) {
+        rightViewRecur(root, 1, new int[] {0});
+       return rightview;
+   }
+    
+    public static void rightViewRecur(Node root, int nextLevel, int[] currentLevel){
+        if(root==null) 
+            return;
+        if(currentLevel[0]<nextLevel){
+            rightview.add(root.data);
+            currentLevel[0] = nextLevel;
         }
-        rightViewRecur(root.right,nextLevel+1);
-        rightViewRecur(root.left,nextLevel+1);
+        rightViewRecur(root.right,nextLevel+1, currentLevel);
+        rightViewRecur(root.left,nextLevel+1, currentLevel);
     }
+    
+   
+    
+    
+    void rightViewUtil(Node node, int nextLevel, int[] maxLevel) {
+      if (node == null)
+         return;
+      if (maxLevel[0] < nextLevel) {
+          rightview.add(node.data);
+         maxLevel[0] = nextLevel;
+      }
+      rightViewUtil(node.right, nextLevel + 1, maxLevel);
+      rightViewUtil(node.left, nextLevel + 1, maxLevel);
+   }
     
     
     /**
@@ -137,6 +160,7 @@ public class ViewBT
      * 
      * @param root
      */
+    public static int currentLevel =0;
     public void leftViewRecur(Node root, int nextLevel){
         if(root==null) return;
         if(currentLevel<nextLevel){
@@ -147,4 +171,11 @@ public class ViewBT
         leftViewRecur(root.right,nextLevel+1);
     }
 
+    public static void main (String[] args)
+    {
+        Node root = Node.getSampleTree();
+        Node root1 = new Node(1);
+        rightViewRecur(root1,1, new int[] {0});
+        System.out.println(rightview);
+    }
 }
