@@ -7,6 +7,14 @@ public class MinimumPathSum
     // Given a m x n grid filled with non-negative numbers, 
     // find a path from top left to bottom right which minimizes the sum of all numbers along its path.
     
+    /*
+         T[0][0] = grid[0][0];    
+         top row => leftcell in T+ grid[i,j]
+         left row => abovecell in T + grid[i,j]
+         
+         T(i,j) =  grid[i,j] + min (abovecell in T , leftcell in T)  // no diagonal path.
+     */
+    
     public int minPathSum(int[][] grid) {
         if(grid == null || grid.length==0)
             return 0;

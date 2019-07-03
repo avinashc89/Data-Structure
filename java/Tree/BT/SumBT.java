@@ -76,9 +76,10 @@ public class SumBT
  
         int current = Math.max(root.data, Math.max(root.data + left, root.data + right));
  
+      //this is just for calculating max
         max = Math.max(max, Math.max(current, left + root.data + right));
  
-        return current;
+        return current;  // since only the path can be root / root+left / root+right to the above tree, we can't have left + root.data + right
     }
     
     /************************************************************************************************/
@@ -101,5 +102,92 @@ public class SumBT
         print_All_Path_With_Sum_N(root.left, sum , 0, new StringBuilder(""));
         print_All_Path_With_Sum_N(root.right, sum , 0, new StringBuilder(""));
     }
+    
+    
+    /************************************************************************************************/
+    
+    
+    public static int maxEvenPathSum(Node root) {
+        return maxPathSum(root).maxEven;
+    }
+    
+    private static NodeStatus maxPathSum(Node node) {
+        if (node == null) return new NodeStatus();
+        
+        NodeStatus left = maxPathSum(node.left);
+        NodeStatus right = maxPathSum(node.right);
+        
+        int[] paths = {
+            // add node.data
+            left.even + node.data, 
+            left.odd + node.data, 
+            right.even + node.data, 
+            right.odd + node.data
+        };
+        
+        int even = 0;
+        int odd = 0;
+        for (int path : paths) {
+            if (isEven(path)) {
+                even = Math.max(even, path);
+            } else {
+                odd = Math.max(odd, path);
+            }
+        }
+        
+        
+        int maxEven = Math.max(even , Math.max(left.maxEven, right.maxEven)); 
+        
+        //this is just for calculating max
+        int[] totalPaths = {
+            node.data + left.odd + right.odd,
+            node.data + left.odd + right.even,
+            node.data + left.even + right.odd,
+            node.data + left.even + right.even
+        };
+        for (int path : totalPaths) {
+            if (isEven(path)) {
+                maxEven = Math.max(maxEven, path);   
+            }
+        }
+        
+        return new NodeStatus(even, odd, maxEven);
+    }
+    
+    private static boolean isEven(int x) {
+        return (x & 1) == 0;
+    }
+    
+    private static class NodeStatus {
+        int even;
+        int odd;
+        int maxEven = Integer.MIN_VALUE;
+        
+        NodeStatus(int even, int odd, int maxEven) {
+            this.even = even;
+            this.odd = odd;
+            this.maxEven = maxEven;
+        }
+        public String toString() {
+            
+            return "Even:"+even+", Odd:"+odd+", maxEven:"+maxEven;
+        };
+        
+        NodeStatus() {}
+    }
 
+    
+    /*      2            */
+    /*     / \           */
+    /*    1   3         */
+    /*   / \   \       */
+    /*  4   6   8       */
+    /*     /            */
+    /*    5             */
+    
+    public static void main (String[] args)
+    {
+        Node root = Node.getSampleTree();
+        System.out.println(maxEvenPathSum(root));
+    }
 }

@@ -45,11 +45,18 @@ public class Node {
 		
 	}
 	
+	/*      2            */
+	/*     / \           */
+	/*    1   3         */
+	/*   / \   \       */
+	/*  4   6   8       */
+	/*     /            */
+	/*    5             */
 	
 	public static Node getSampleTree()
 	{
-	    Node root = new Node(2);              /*    2            */
-        root.left    = new Node(1);          /*    / \           */
+	    Node root = new Node(2);              /*     2            */
+        root.left    = new Node(1);          /*     / \           */
         root.right   = new Node(3);          /*    1   3         */
         root.left.left = new Node(4);        /*   / \   \       */
         root.left.right = new Node(6);       /*  4   6   8       */
