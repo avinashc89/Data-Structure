@@ -2,7 +2,7 @@ package com.tool.java.leetcode;
 
 import java.util.Stack;
 
-public class GoogleRyhmingWords
+public class GoogleRhymingWords
 {
     /*
      Please find explanation here-
@@ -52,6 +52,17 @@ public class GoogleRyhmingWords
              { {2}, {1, 3} }
              { {3}, {1, 2} }
              { {1, 2, 3} }. 
+           
+     Using stack 
+     
+     1=> A 'A'
+     2=> we have A,B => AA,A , AB,B
+     3=> we have A,B,C => 
+             consider AB 'B' => we can append any characted before the 'B' to AB. since the char exist already, it would form diiferent rhyme. 
+                         and we can add only one extra char at the end after B. 
+                         lets say we add C => ABC, and we add D => ABD => ABC & ABD are both same. 
+                      so add A,B,C at the end of AB
+                      ABA, ABB, ABC
              
      */
     
@@ -106,7 +117,10 @@ public class GoogleRyhmingWords
             // Starting from 'A' till lastChar +1, 
             // Try out all possible combinations : 
             for(char ch = 'A'; ch <= lastChar+1; ch++){
-                possibleRhymesStack.push(new Pair(new StringBuilder(poppedElem.rhymePattern).append(ch).toString(), ch > lastChar ? ch : lastChar ));
+                String pattern = new StringBuilder(poppedElem.rhymePattern).append(ch).toString();
+                char prevMaxChar =  ch > lastChar ? ch : lastChar;
+                Pair p = new Pair(pattern, prevMaxChar);
+                possibleRhymesStack.push(p);
             }
         }
         
@@ -116,7 +130,36 @@ public class GoogleRyhmingWords
 
     public static void main (String[] args)
     {
-        GoogleRyhmingWords g = new GoogleRyhmingWords();
+        GoogleRhymingWords g = new GoogleRhymingWords();
         g.printPossibleRhymes(3);
     }
+    
+    //find count using bell triangle
+    /*
+        1
+        1 2
+        2 3 5
+        5 7 10 15
+        15 20 27 37 52
+        
+        X1
+        X2  Y  => y = x1+x2
+     */
+    
+    static int bellNumber(int n) 
+    { 
+        int[][] bell = new int[n+1][n+1]; 
+        bell[0][0] = 1; 
+          
+        for (int i=1; i<=n; i++) 
+        { 
+            // Explicitly fill for j = 0 
+            bell[i][0] = bell[i-1][i-1]; 
+   
+            // Fill for remaining values of j 
+            for (int j=1; j<=i; j++) 
+                bell[i][j] = bell[i-1][j-1] + bell[i][j-1]; 
+        } 
+        return bell[n][0]; 
+    } 
 }

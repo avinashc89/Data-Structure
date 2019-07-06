@@ -4,14 +4,14 @@ import java.util.Stack;
 
 public class RemoveAdjacentDuplicates
 {
-    
-    // a,b,b,a,c,a 
+    //   i         j 
+    //   a,b,b,a,c,a 
     
     public static String removeDuplicates(String s)
     {
         char [] m = s.toCharArray();
-        int i = -1;
-        int j = 0;
+        int i = 0;
+        int j = 1;
         while(j < m.length) {
             if(i < 0 || m[i] != m[j]) {
                 m[++i] = m[j++]; 
