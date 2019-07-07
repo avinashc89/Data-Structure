@@ -3,7 +3,8 @@ package com.tool.java.DP.matrix_Graph;
 
 public class LongestIncreasingPath {
     
-    /*
+    /* Using DFS. walk to neighbours(x,y) if grid(i,j) < neighbours(x,y), in all four directions. return the maxlen of four direction. 
+     * if t{x,y} is already calc ie., >0 , return it. => DP
      
      Input: nums = 
                 [
@@ -39,25 +40,24 @@ public class LongestIncreasingPath {
     }
 
     public static int walk(int[][] mat, int i, int j){
+      
+        //dynamic programming to return if already calculated
         if(dp[i][j] > 0){
             return dp[i][j];
         }
-
+        
         int maxLen = 0;
 
-        //wal to all 4 directions // or split into 4 ifs
-        for(int d = 0; d < dir.length; d++){
+        for(int d = 0; d < dir.length; d++)
+        {
             int r = i+dir[d][0];
             int c = j+dir[d][1];
-
-            //if not safe or not incerasing then prune this path
-            if(!isSafe(mat, r, c) || mat[r][c] <= mat[i][j]){
+            if(!isSafe(mat, r, c) || mat[r][c] <= mat[i][j]){       //checking if increasing path
                 continue;
             }
-
-            //other wise do a dfs walk
-            int pathLen = 1+walk(mat, r, c);
-            maxLen = Math.max(maxLen, pathLen);
+            
+            int pathLen = 1+walk(mat, r, c); 
+            maxLen = Math.max(maxLen, pathLen);  // each direction can bring different len. get the maxlen
         }
 
         //update dp table for current position i,j
