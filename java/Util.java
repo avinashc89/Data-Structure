@@ -34,6 +34,14 @@ public class Util
         } 
         System.out.println("\n_____________________");
     }
+    public static void printArray(String mat[]){ 
+        System.out.println("\n_____________________");
+        for (int i = 0; i < mat.length; i ++){ 
+                System.out.print( mat[i] +"  "); 
+                
+        } 
+        System.out.println("\n_____________________");
+    }
     
     public static void printArray(double mat[]){ 
         System.out.println("\n_____________________");

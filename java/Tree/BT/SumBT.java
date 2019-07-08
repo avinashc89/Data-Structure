@@ -176,6 +176,25 @@ public class SumBT
         NodeStatus() {}
     }
 
+    // => 214+2165+238 
+    public int sumNumbers(Node root) {
+        if (root == null) return 0;
+        return dfs(0, root);
+      }
+
+      private int dfs(int num, Node node) {
+        int newNum = num * 10 + node.data;
+        if (node.left == null && node.right == null) 
+            return newNum;
+        int sum = 0;
+        if (node.left != null) 
+            sum += dfs(newNum, node.left);
+        if (node.right != null) 
+            sum += dfs(newNum, node.right);
+        return sum;
+      }
+      
+      
     
     /*      2            */
     /*     / \           */
