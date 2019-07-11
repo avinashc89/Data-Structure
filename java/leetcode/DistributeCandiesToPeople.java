@@ -13,7 +13,7 @@ public class DistributeCandiesToPeople
      {
          for(int i=0; i<num_people && candies>0; i++ )
          {
-             int cadies_given = Math.min(itr*num_people+(i+1), candies);
+             int cadies_given = Math.min((itr*num_people)+(i+1), candies);
              ppl[i] = ppl[i] + cadies_given;
              candies= candies - cadies_given;
          }

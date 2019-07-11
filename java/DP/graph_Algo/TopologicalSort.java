@@ -36,8 +36,8 @@ public class TopologicalSort<T>
       D => 
       
      */
-    public Deque<Vertex<T>> topSort(Graph<T> graph) {
-        Deque<Vertex<T>> stack = new ArrayDeque<>();        
+    public Stack<Vertex<T>> topSort(Graph<T> graph) {
+        Stack<Vertex<T>> stack = new Stack<>();        
         Set<Vertex<T>> visited = new HashSet<>();           //to check if node is visited
         
         //choose any vertex and check if visited. if not, do topological sort
@@ -52,7 +52,7 @@ public class TopologicalSort<T>
 
     // make V as visited and get the childrens and recurse. Once all done add to stack.
     // so for any V, it is added to stack only if the dependencies are done.
-    private void topSortUtil(Vertex<T> vertex, Deque<Vertex<T>> stack,
+    private void topSortUtil(Vertex<T> vertex, Stack<Vertex<T>> stack,
             Set<Vertex<T>> visited) 
     {
         visited.add(vertex);
@@ -62,7 +62,7 @@ public class TopologicalSort<T>
             }
             topSortUtil(childVertex,stack,visited);
         }
-        stack.offerFirst(vertex);
+        stack.push(vertex);
     }
     
     public static void main(String args[]){
@@ -76,9 +76,9 @@ public class TopologicalSort<T>
         graph.addEdge(8, 11);
         
         TopologicalSort<Integer> sort = new TopologicalSort<Integer>();
-        Deque<Vertex<Integer>> result = sort.topSort(graph);
+        Stack<Vertex<Integer>> result = sort.topSort(graph);
         while(!result.isEmpty()){
-            System.out.println(result.poll());
+            System.out.println(result.pop());
         }
     }
 

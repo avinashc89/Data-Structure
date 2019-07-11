@@ -5,7 +5,7 @@ import java.util.*;
 public class DecodeString_3AB2C
 {
     /*  "3[a]2[bc]", return "aaabcbc".
-     iterate from back, and 
+     iterate from back, and and push to stack
      if we see [, 
           travel to left and find the repeatCount
           pop from stack until ] -> substring
@@ -23,6 +23,8 @@ public class DecodeString_3AB2C
             if (cur.equals("[")) {
                 int repeat = 0;
                 int count = 0;
+                
+                //get the number
                 while (i - 1 >= 0 && s.charAt(i - 1) >= '0' && s.charAt(i - 1) <= '9') {
                     repeat += (s.charAt(i - 1) - '0') * Math.pow(10, count);
                     i--;

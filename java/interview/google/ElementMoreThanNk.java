@@ -22,7 +22,7 @@ public class ElementMoreThanNk {
 			temp[j] = new EleCount();
 		}
 	    
-	    for (int i=0; i<k-1; i++)
+	    for (int i=0; i<temp.length; i++)
 	        temp[i].c = 0;
 	 
 	    for (int i = 0; i < n; i++)

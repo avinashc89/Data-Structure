@@ -54,7 +54,7 @@ public class BullAndCow
         //part2
         for(int i=0;i<10;i++){
             if(counter[i]<0)
-                b+=counter[i];
+                b+=counter[i]; // b-1
         }
         return a+"A"+b+"B";
     }

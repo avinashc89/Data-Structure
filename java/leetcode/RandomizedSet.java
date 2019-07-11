@@ -32,7 +32,7 @@ public class RandomizedSet
 
     // idea: swapping with last num in list and update map 
     //if present: get the index of val -> and remove from map and list.remove(index)
-    // but removing from list will decrement all the left index by 1. 
+    // but removing from list will decrement all the right index by 1. 
     //                  so swap the last number to this postion. 
     //                  update the map last num.
     //                  delete the last index in map.

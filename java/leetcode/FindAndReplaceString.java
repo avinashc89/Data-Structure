@@ -15,6 +15,7 @@ public class FindAndReplaceString
      */
     public String findReplaceString(String S, int[] indexes, String[] sources, String[] targets) {
         StringBuilder res = new StringBuilder();
+        
         HashMap<Integer, String[]> map = new HashMap<>();
         for(int i = 0; i < indexes.length; i++) {
             int index = indexes[i];
@@ -23,6 +24,7 @@ public class FindAndReplaceString
                 map.put(index, new String[]{sources[i], targets[i]});
             }
         }
+        
         int i = 0;
         while(i < S.length()) {
             if(!map.containsKey(i))             //no replacement info available. so append the next char as usual

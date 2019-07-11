@@ -50,9 +50,8 @@ public class ConnectSameLevelBT
                 n.next = q.peek();
             }
             
-            q.remove();
             if(!q.isEmpty())
-                q.add(null);
+                q.add(null);        // for last node in the level.
         }
     }
 

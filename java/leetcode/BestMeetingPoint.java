@@ -106,14 +106,17 @@ public class BestMeetingPoint
             suffixDist[i] = suffixDist[i + 1] + suffixCount;
             suffixCount += houseArray[i];
         }
-        //[0, 2, 5] top to bottom  for row wise.
-        //[1, 0, 0] bottom to top. 
+        //[0, 2, 5] top to bottom  for row wise.        => 2 1 0 => 
+        //[1, 0, 0] bottom to top.                      => 0 2 0 
+        //    2                                         => 0 2 5
+        //    1
+        //    0
         
         int min = prefixDist[n-1];
         for(int i = 0 ; i< houseArray.length ;i++)
             min = Math.min(min, prefixDist[i] + suffixDist[i]);
 
-        return min;
+        return min; //1 for row
     }       
 
 

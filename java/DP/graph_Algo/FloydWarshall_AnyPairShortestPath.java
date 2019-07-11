@@ -46,11 +46,11 @@ public class FloydWarshall_AnyPairShortestPath
             1000000  ,1000000  ,0  ,2  ,
             1  ,1000000  ,1000000  ,0  ,
         
-            -1  ,0  ,0  ,0  ,
-            -1  ,-1  ,1  ,-1  ,
-            -1  ,-1  ,-1  ,2  ,
-             3  ,-1  ,-1  ,-1  ,
          
+         [[-1, 0, 0, 0], 
+          [-1, -1, 1, -1],
+          [-1, -1, -1, 2],
+          [3, 0, 0, -1]]
          */
         Util.printMatrix(distance);
         System.out.println("");
@@ -114,6 +114,13 @@ public class FloydWarshall_AnyPairShortestPath
             System.out.println("");
         }
     }
+    
+    /*
+     *    [[-1, 0, 0, 0], 
+          [-1, -1, 1, -1],
+          [-1, -1, -1, 2],
+          [3, 0, 0, -1]]
+     */
     
     
     public void printPath(int[][] path, int start, int end) {

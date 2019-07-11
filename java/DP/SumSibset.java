@@ -6,7 +6,6 @@ public class SumSibset {
 		int[] A = {};
 		System.out.println("\nFrom DP: " + subSetDP(A, 6) );
 	 
-		System.out.println(Integer.parseInt(""));
 	}
 
 	public static boolean subSetDP(int[] A, int sum) {

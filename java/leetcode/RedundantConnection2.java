@@ -91,7 +91,7 @@ public class RedundantConnection2
         {
             int pu = dsu.find(edge[0]);
             int pv = dsu.find(edge[1]);
-            if (pv != edge[1]) {
+            if (pv != edge[1]) {            //if (pv == pu)
                 twoParentsEdge = edge;
             } else {
                 // if parent of u is v  then cycle is found i.e,  u->v, u<-v

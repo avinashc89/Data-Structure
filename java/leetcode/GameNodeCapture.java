@@ -100,7 +100,7 @@ public class GameNodeCapture
     }
 
     // we can also use count() and find leftCount and rightCount of each node. parentCount = TC - (1+LC+R). put in the map. return (1+LC+R).
-    //while computing, also compute the max out of three in each node. if max(lets say opponent takes) is less than half of three. then we win.
+    //while computing, also compute the max out of three in each node. if max(lets say opponent takes) is less than half of tree. then we win.
     
     private static int getComponentSize(Node n, Node branch, Map<Node, Map<Node, Integer>> components) {
         if (n == null || branch == null) return 0;

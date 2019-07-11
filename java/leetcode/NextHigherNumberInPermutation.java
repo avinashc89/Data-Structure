@@ -92,5 +92,7 @@ public class NextHigherNumberInPermutation //3.3
         nextHigherNumber(30102);
         nextHigherNumber(98765);
     }
+    
+    // 13245
 
 }

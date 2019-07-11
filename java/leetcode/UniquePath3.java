@@ -19,7 +19,7 @@ public class UniquePath3
             [2,0]]
     Output: 0
 
-    we need to find unique path such that it travels thro all 0 once. -1 is obstacles
+    we need to find unique path from 1 to 2 such that it travels thro all 0 once. -1 is obstacles
 
     Idea: iterate and find the number of zero(tobevisited). also the start point, when i,j ==1 
         start from start point => 

@@ -39,11 +39,13 @@ public class ShortestBridge //medium // BFS& DFS
             }
         }
         
-        //Util.printMatrix(visited);
-        //Util.printMatrix(A);
-        // 2. bfs to expand this island
+        Util.printMatrix(visited);
+        Util.printMatrix(A);
+        // 2. bfs to expand this island => queue has all the 1's location of first found island
         int step = 0;
         while (!q.isEmpty()) {
+            
+            //empty whole queue and get the childrens
             int size = q.size();
             while (size-- > 0) {
                 int[] cur = q.poll();
@@ -76,7 +78,9 @@ public class ShortestBridge //medium // BFS& DFS
     
     public static void main (String[] args)
     {
-        int[][] a = {{1,1,0},{1,1,0},{0,0,1}};
+        int[][] a = {{1,1,0},
+                     {1,0,0},
+                     {0,0,1}};
         System.out.println(shortestBridge(a));
     }
 }

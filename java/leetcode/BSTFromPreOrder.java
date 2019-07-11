@@ -9,9 +9,12 @@ import com.tool.java.Tree.Node;
 
 2. Make the first value as root. Push it to the stack.
 
-3. Keep on popping while the stack is not empty and the next value is greater than stack’s top value. Make this value as the right child of the last popped node. Push the new node to the stack.
+3. Keep on popping while the stack is not empty and the next value is greater than stack’s top value.
+ Make this value as the right child of the last popped node. 
+ Push the new node to the stack.
 
-4. If the next value is less than the stack’s top value, make this value as the left child of the stack’s top node. Push the new node to the stack.
+4. If the next value is less than the stack’s top value, make this value as the left child of the stack’s top node. 
+Push the new node to the stack.
 
 5. Repeat steps 2 and 3 until there are items remaining in pre[].
 

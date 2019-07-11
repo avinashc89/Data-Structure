@@ -22,7 +22,7 @@ public class PrintDuplicates
             } 
             arr[arr[i] % n] += n; 
             
-            //Util.printArray(arr);
+            Util.printArray(arr);
         } 
       
         // If flag variable is not set 
