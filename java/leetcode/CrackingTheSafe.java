@@ -37,8 +37,6 @@ public class CrackingTheSafe
     
     public static void main (String[] args)
     {
-        String s  = "0000";
-        System.out.println(s+1);
         CrackingTheSafe c = new CrackingTheSafe();
         c.crackSafe(3,4);
     }
