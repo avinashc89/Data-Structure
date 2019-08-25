@@ -1,5 +1,6 @@
 package com.tool.java.Tree;
 
+import java.util.*;
 
 public class Node {
 	
@@ -9,6 +10,7 @@ public class Node {
 	public Node next;
 	public Node parent;
 	public int hd;
+	public List<Node> children = new ArrayList<Node>();
 	
 	public Node(int data)
 	{
