@@ -23,23 +23,87 @@ public class SerializeDeserializeNAryTree
         sb.append("]");
         return sb.toString();
     }
+    
+    
+    public String serialize1(Node root)
+    {
+        if(root == null)
+            return "";
+        
+        StringBuilder s = new StringBuilder();
+        s.append(root.data);
+        s.append("[");
+        for(Node children: root.children)
+        {
+            s.append(serialize(children));
+        }
+        s.append("]");
+        return s.toString();
+        
+    }
+    
+    public Node deserialize1(String data)
+    {
+        Node root = null;
+        Stack<Node> stack = new Stack<Node>();
+        
+        int end=0;
+        
+        while(end < data.length())
+        {
+            int start = end;
+            
+            // Move pointer forward until we don't find a digit...
+            // ie., moves to [
+            while(end < data.length() && Character.isDigit(data.charAt(end)))
+            {
+                end++;
+            }
+            
+            // If we haven't found a digit then we must have found the end of a child list...
+            // ie., start = ] ,  end = ] => in this case we have reached end of that child for a particular parent
+            if(end == start)
+            {
+               
+                Node child = stack.pop();
+                //pop the child and assign it to parent 
+                if(!stack.isEmpty()){
+                    stack.peek().children.add(child);
+                }
+                else // else the only node in the stack is the root.
+                {
+                    root = child;
+                    break;
+                }
+            }
+            else            // take the num and make it as node and push into stack
+            {
+                Node n = new Node(Integer.parseInt(data.substring(start,end)));
+                n.children = new ArrayList<Node>();
+                stack.add(n);
+            }
+            
+            end++;
+        }
+        return root;
+    }
 
     // Decodes your encoded data to tree.
     public static Node deserialize(String data) {
         Node root = null;
         Stack<Node> stack = new Stack<>();
-        int i = 0;
+        int end = 0;
         
-        while (i < data.length()) {
-            int start = i;
+        while (end < data.length()) {
+            int start = end;
             
             // Move pointer forward until we don't find a digit...
-            while (i < data.length() && Character.isDigit(data.charAt(i))) {
-                i++;
+            while (end < data.length() && Character.isDigit(data.charAt(end))) {
+                end++;
             }
             
             // If we haven't found a digit then we must have found the end of a child list...
-            if (start == i) {
+            if (start == end) {
                 Node child = stack.pop();
                 if (stack.isEmpty()) {
                     root = child;
@@ -49,11 +113,11 @@ public class SerializeDeserializeNAryTree
                     stack.peek().children.add(child);
                 }
             } else {
-                Node n = new Node(Integer.parseInt(data.substring(start, i)));
+                Node n = new Node(Integer.parseInt(data.substring(start, end)));
                 n.children = new ArrayList<>();
                 stack.push(n);
             }
-            i++;
+            end++;
         }
         return root;
     }
@@ -81,7 +145,9 @@ public class SerializeDeserializeNAryTree
         y.children.add(new Node(8));
         y.children.add(z);
         
+        String data  = serialize(x);
         System.out.println(serialize(x)); //1[2[]3[6[]7[]8[]9[]]4[]5[]]
+        deserialize(data);
         
     }
 

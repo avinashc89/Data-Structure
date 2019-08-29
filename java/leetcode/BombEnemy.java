@@ -9,7 +9,7 @@ public class BombEnemy
              ["0","E","0","0"]]
     Output: 3 
 
-
+     we can do by traversing from all direction => 4*n*m matrix. and add all cell to get the max.
 
      */
     // Time : O(2nm)  Space: O(2nm+n+m) => O(3nm)
