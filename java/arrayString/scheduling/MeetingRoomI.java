@@ -43,6 +43,19 @@ public class MeetingRoomI
     }
     
     
+   /*
+       Mtd 2: Using Treemap orders the map entry with key
+       ex: 2,3    1,4     5,8   
+       
+       up   up  dn  dn  up          dn
+       1    2   3   4   5   6   7   8   9   
+       
+       Add total no of up and dn.
+       up and dn should compliment each other when traversing. ie., up = +1, dn = -1.
+       if the curr total is more than 1 then he has to attend two meeting simultaneously.
+       
+    */
+//    O(nlogn)
     private static boolean caAttendMeeting (Interval[] intervals)
     {
         TreeMap<Integer, Integer> map = new TreeMap<Integer, Integer>();
@@ -61,7 +74,8 @@ public class MeetingRoomI
         return true;
     }
     
-    
+//    Mtd 1: Sorting start and end time. 
+//    O(nlogn)
     public boolean canAttendMeetings(Interval[] intervals) {
         int len=intervals.length;
         if(len==0){

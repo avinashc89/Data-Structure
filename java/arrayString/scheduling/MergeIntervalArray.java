@@ -1,11 +1,12 @@
 package com.tool.java.arrayString.scheduling;
 
 import java.util.*;
+import com.tool.java.Util;
 
 public class MergeIntervalArray
 {
    //[starttime, endtime] => merge if overlaps
-    public int[][] merge(int[][] intervals) 
+    public static int[][] merge(int[][] intervals) 
     {
         List<int[]> res=new ArrayList<int[]>();
         
@@ -39,6 +40,11 @@ public class MergeIntervalArray
         res.add(cur);
         
         return res.toArray(new int[res.size()][]);
+    }
+    
+    public static void main (String[] args)
+    {
+        Util.printMatrix(merge(new int[][]{{1,3},{5,7},{2,4},{5,9}}));
     }
     
     

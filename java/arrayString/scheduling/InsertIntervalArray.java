@@ -2,11 +2,15 @@ package com.tool.java.arrayString.scheduling;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.tool.java.Util;
 
 public class InsertIntervalArray // Hard
 {
+    // inserting new interval. 
+    
+     
     //linear approach
-    public int[][] insert(int[][] intervals, int[] newInterval) 
+    public static int[][] insert(int[][] intervals, int[] newInterval) 
     {
         if (intervals == null || intervals.length ==0) 
             return new int[][]{newInterval};
@@ -95,6 +99,11 @@ public class InsertIntervalArray // Hard
             else r = m ;
         }
         return l;
+    }
+    
+    public static void main (String[] args)
+    {
+        Util.printMatrix(insert(new int[][]{{1,3},{5,7},{2,4},{9,12}}, new int[]{6,10}));
     }
 
 }

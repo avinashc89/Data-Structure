@@ -11,13 +11,11 @@ public class BackspaceCompare
     Input: S = "a##c", T = "#a#c"
     Output: true
     Explanation: Both S and T become "c".
+*/
 
-    Use two stack for each word. when '#' is encountered, pop the char. 
-    Finally compare two stacks
     
-    Space&time - o(n)
-     */
-    
+//  Use two stack for each word. when '#' is encountered, pop the char.  Finally compare two stacks
+//  Space&time - o(n)
     public boolean backspaceCompare(String S, String T) {
         return getResult(S.toCharArray()).equals(getResult(T.toCharArray()));
     }
@@ -40,13 +38,14 @@ public class BackspaceCompare
     }
     
     //same approach. read both string from back with same above approach. when valid char is read, compare. if not same then return false
+    //time - o(n) space o(1)
     public boolean backspaceCompare1(String S, String T) {
         int p1 = S.length()-1;
         int p2 = T.length()-1;
         int b1 = 0;
         int b2 = 0;
         while(p1 >= 0 || p2 >= 0){
-            while(p1 >= 0 && (S.charAt(p1) == '#' || b1 > 0)){
+            while(p1 >= 0 && (S.charAt(p1) == '#' || b1 > 0)){   //*
                 if(S.charAt(p1--) == '#') b1++;
                 else b1--;
             } 
@@ -62,4 +61,9 @@ public class BackspaceCompare
         }
         return true;
     }
+    
+    //*if still letters exist, 
+    // if #, increment count 1  
+    // if not #(say its letter 'x'), then check #count > 1 and decrement => this way we are count letter 'x'.
+    //at the end of the inner loop, p1 points to correct(proper) letter 
 }
